@@ -6,7 +6,7 @@ import { v5 as uuidv5 } from 'uuid';
 import * as io from 'socket.io-client';
 
 // const myId = uuid.v4();
-const myId = uuidv5('enterdev.single-screen-frontend.com', uuidv5.DNS);
+const uuid = uuidv5('enterdev.single-screen-frontend.com', uuidv5.DNS);
 
 @Injectable({
   providedIn: 'root'
@@ -15,23 +15,31 @@ export class SocketioService {
   private socket;
   // private username = Math.random().toString(36).substr(2,8);
   // private username = myId;
-  private username = myId;
+  private username = 'single-screen-frontend';
 
-  constructor() { }
-
-  setupSocketConnection() {
+  constructor() {
     this.socket = io(environment.SOCKET_ENDPOINT);
-    this.socket.emit('join', { username: this.username });
+  }
+
+  setupSocketJoin() {
+    this.socket.emit('join', { uuid: uuid, username: this.username });
   }
 
   sendMessage(msg: string){
     this.socket.emit('new_message', {message: msg});
   }
 
-  getChat(){
+  getMessages(){
     this.socket.on('chat_message', (msg: any) => {
       console.log(msg);
       return msg
-    })
+    });
+  }
+
+  getUserJoined(){
+    this.socket.on('user_joined', (msg: any) => {
+      console.log(msg);
+      return msg
+    });
   }
 }

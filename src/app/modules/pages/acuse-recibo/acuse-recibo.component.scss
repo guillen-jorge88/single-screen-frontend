@@ -1,0 +1,19 @@
+:host {
+    .container {
+        padding: 5% 10%;
+        mat-card {
+            mat-card-content {
+                form {
+                    mat-form-field {
+                        width: 45%;
+                        margin-left: 2%;
+                        margin-right: 2%;
+                    }
+                    .field-full {
+                        margin-right: 20%;
+                    }
+                }
+            }
+        }
+    }
+}

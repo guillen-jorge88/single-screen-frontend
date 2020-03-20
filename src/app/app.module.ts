@@ -5,6 +5,7 @@ import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { SocketioService } from './services/socket/socketio.service';
 import { PagesModule } from './modules/pages/pages.module';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 
 @NgModule({
   declarations: [
@@ -13,9 +14,10 @@ import { PagesModule } from './modules/pages/pages.module';
   imports: [
     BrowserModule,
     AppRoutingModule,
-    PagesModule
+    PagesModule,
+    BrowserAnimationsModule
   ],
-  providers: [SocketioService],
+  providers: [],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

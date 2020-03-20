@@ -1,1 +1,110 @@
-<p>acuse-recibo works!</p>
+<div class="container">
+    <mat-card class="example-card">
+        <!-- <mat-card-header>
+        <div mat-card-avatar class="example-header-image"></div>
+        <mat-card-title>Shiba Inu</mat-card-title>
+        <mat-card-subtitle>Dog Breed</mat-card-subtitle>
+      </mat-card-header> -->
+        <mat-card-content>
+            <form [formGroup]="acuseForm" #myForm="ngForm">
+                <!-- (ngSubmit)="onFormSubmit(acuseForm.value)" -->
+                <mat-form-field class="field-full">
+                    <mat-select formControlName="tipo_ducumento" placeholder="Tipo de Ducumento">
+                        <mat-option>-- Seleccione una Opción --</mat-option>
+                        <mat-option value="Nit">Nit</mat-option>
+                        <mat-option value="Cedula Ciudadnia">Cedula Ciudadnia</mat-option>
+                        <mat-option value="Cedula Extranjeria">Cedula Extranjeria</mat-option>
+                    </mat-select>
+                    <mat-error>
+                        <span *ngIf="!acuseForm.get('tipo_ducumento').valid && acuseForm.get('tipo_ducumento').touched">Por favor selecione un item !!!</span>
+                    </mat-error>
+                </mat-form-field>
+
+                <mat-form-field>
+                    <input type="number" formControlName="numero_documento" matInput placeholder="Número de Documento">
+                    <mat-error><span *ngIf="!acuseForm.get('numero_documento').valid && acuseForm.get('numero_documento').touched">Por favor ingrese el número de documento !!!</span></mat-error>
+                </mat-form-field>
+
+                <mat-form-field>
+                    <input type="text" formControlName="nombre_cliente" matInput placeholder="Nombre del Cliente">
+                    <mat-error><span *ngIf="!acuseForm.get('nombre_cliente').valid && acuseForm.get('nombre_cliente').touched">Por favor ingrese el nombre del cliente !!!</span></mat-error>
+                </mat-form-field>
+
+                <mat-form-field class="example-full-width">
+                    <mat-label>Telephone</mat-label>
+                    <!-- <span matPrefix>+57 &nbsp;</span> -->
+                    <input type="tel" formControlName="telefono" matInput placeholder="555-555-1234">
+                    <mat-error><span *ngIf="!acuseForm.get('telefono').valid && acuseForm.get('telefono').touched">Por favor ingrese un numero de cliente Valido !!!</span></mat-error>
+                </mat-form-field>
+
+                <mat-form-field>
+                    <input type="text" formControlName="ciudad" matInput placeholder="Ciudad">
+                    <mat-error><span *ngIf="!acuseForm.get('ciudad').valid && acuseForm.get('ciudad').touched">Por favor ingrese una ciudad !!!</span></mat-error>
+                </mat-form-field>
+
+                <mat-form-field class="demo-full-width">
+                    <mat-label>Email</mat-label>
+                    <input formControlName="email" matInput placeholder="Ejemplo : demo@demo.com">
+                    <mat-error>
+                        <span *ngIf="!acuseForm.get('email').valid && acuseForm.get('email').touched">Ingrese el correo electrónico valido !!!</span>
+                    </mat-error>
+                </mat-form-field>
+
+                <mat-form-field>
+                    <input type="text" formControlName="tipo_escalamiento" matInput placeholder="Tipo de Escalamiento">
+                    <mat-error><span *ngIf="!acuseForm.get('tipo_escalamiento').valid && acuseForm.get('tipo_escalamiento').touched">Por favor ingrese el nombre del cliente !!!</span></mat-error>
+                </mat-form-field>
+
+                <mat-form-field>
+                    <mat-select formControlName="tipo_producto" placeholder="Tipo de Producto">
+                        <mat-option>-- Seleccione una Opción --</mat-option>
+                        <mat-option value="TC">TC</mat-option>
+                        <mat-option value="TDC">TDC</mat-option>
+                    </mat-select>
+                    <mat-error>
+                        <span *ngIf="!acuseForm.get('tipo_producto').valid && acuseForm.get('tipo_producto').touched">Por favor selecione un producto !!!</span>
+                    </mat-error>
+                </mat-form-field>
+
+                <mat-form-field>
+                    <input matInput placeholder="Numero de Producto" [type]="hide ? 'password' : 'number'" formControlName="numero_producto">
+                    <mat-icon matSuffix (click)="hide = !hide">{{hide ? 'visibility_off' : 'visibility'}}</mat-icon>
+                    <mat-hint *ngIf="!acuseForm.get('numero_producto').value">Enter your password</mat-hint>
+                    <mat-error>
+                        <span *ngIf="!acuseForm.get('numero_producto').valid && acuseForm.get('numero_producto').touched">Ingrese un Numero de producto Valido !!!</span>
+                    </mat-error>
+                </mat-form-field>
+
+                <mat-form-field>
+                    <mat-select formControlName="medio_respuesta" placeholder="Medio de Respuesta">
+                        <mat-option>-- Seleccione una Opción --</mat-option>
+                        <mat-option value="SMS">SMS</mat-option>
+                        <mat-option value="EMAIL">EMAIL</mat-option>
+                    </mat-select>
+                    <mat-error>
+                        <span *ngIf="!acuseForm.get('medio_respuesta').valid && acuseForm.get('medio_respuesta').touched">Por favor selecione un producto !!!</span>
+                    </mat-error>
+                </mat-form-field>
+
+                <mat-form-field>
+                    <mat-label>Descripcion del Caso</mat-label>
+                    <textarea matInput formControlName="descripcion_caso"></textarea>
+                    <mat-error>
+                        <span *ngIf="!acuseForm.get('medio_respuesta').valid && acuseForm.get('medio_respuesta').touched">Por favor selecione un producto !!!</span>
+                    </mat-error>
+                </mat-form-field>
+
+                <!-- <div class="sc-form-field">
+            <button mat-raised-button color="accent" type="submit" [disabled]="!acuseForm.valid">Actualizar</button>
+            <button mat-raised-button color="accent" [disabled]="!acuseForm.valid">Radicado Bizagi</button>
+            <button mat-raised-button color="accent" >Cancelar</button>
+          </div> -->
+            </form>
+        </mat-card-content>
+        <mat-card-actions>
+            <button mat-raised-button color="accent" type="submit" [disabled]="!acuseForm.valid">Actualizar</button>
+            <button mat-raised-button color="accent" [disabled]="!acuseForm.valid || !isDisabledBzg">Radicado Bizagi</button>
+            <button mat-raised-button color="accent" (click)="resetForm()">Cancelar</button>
+        </mat-card-actions>
+    </mat-card>
+</div>
